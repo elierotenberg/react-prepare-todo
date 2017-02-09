@@ -1885,13 +1885,9 @@ https-browserify@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-0.0.1.tgz#3f91365cabe60b77ed0ebba24b454e3e09d95a82"
 
-iconv-lite@0.4.13:
+iconv-lite@0.4.13, iconv-lite@~0.4.13:
   version "0.4.13"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.13.tgz#1f88aba4ab0b1508e8312acc39345f36e992e2f2"
-
-iconv-lite@~0.4.13:
-  version "0.4.15"
-  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
 
 ieee754@^1.1.4:
   version "1.1.8"
@@ -2854,9 +2850,9 @@ react-dom@^15.4.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react-prepare@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-prepare/-/react-prepare-0.2.0.tgz#be60cfdb49059b5752a35340fa4d5e60fc9c8b30"
+react-prepare@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-prepare/-/react-prepare-0.3.0.tgz#dbc995b7b05bde7ef45d7db83325ed698a0f7c96"
   dependencies:
     babel-runtime "^6.11.6"
 

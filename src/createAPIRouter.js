@@ -1,6 +1,6 @@
-import createRouter from 'koa-router';
+import Router from 'koa-router';
 
-export default (db) => createRouter()
+export default (db) => new Router()
   .get('/user', function* getUsers(next) {
     this.body = {
       users: Object.keys(db.users),

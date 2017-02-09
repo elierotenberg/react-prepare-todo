@@ -8,9 +8,10 @@
   "scripts": {
     "clean": "node_modules/.bin/rimraf dist",
     "lint": "node_modules/.bin/eslint src/**/*.js",
-    "build": "node_modules/.bin/babel src -d dist",
+    "build": "node_modules/.bin/babel src -d dist && cp src/index.html dist/index.html",
+    "bundle": "node_modules/.bin/webpack",
     "test": "node_modules/.bin/mocha --compilers js:babel-register src/**/*.spec.js",
-    "make": "yarn run lint && yarn run clean && yarn run build && yarn run test"
+    "make": "yarn run lint && yarn run clean && yarn run build && yarn run bundle && yarn run test"
   },
   "dependencies": {
     "babel-runtime": "^6.22.0",
@@ -19,12 +20,13 @@
     "koa-router": "^5.4.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-prepare": "^0.2.0",
+    "react-prepare": "^0.3.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-class-properties": "^6.22.0",
