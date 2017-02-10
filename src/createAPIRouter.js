@@ -11,11 +11,13 @@ export default (db) => new Router()
     const { userName } = this.request.body;
     if(!userName) {
       this.status = 400;
+      this.body = 'Expected { userName }.';
       yield next;
       return;
     }
     if(db.users[userName]) {
       this.status = 403;
+      this.body = `User ${userName} already exists.`;
       yield next;
       return;
     }
@@ -29,6 +31,7 @@ export default (db) => new Router()
     const { userName } = this.params;
     if(!db.users[userName]) {
       this.status = 404;
+      this.body = `User ${userName} doesn't exist.`;
       yield next;
       return;
     }
@@ -40,27 +43,31 @@ export default (db) => new Router()
     const { userName } = this.params;
     if(!item || !userName) {
       this.status = 400;
+      this.body = 'Expected { item, userName }.';
       yield next;
       return;
     }
     if(!db.users[userName]) {
       this.status = 404;
+      this.body = `User ${userName} doesn't exist.`;
       yield next;
       return;
     }
     db.users[userName].items.push(item);
-    this.body = db.user[userName];
+    this.body = db.users[userName];
     yield next;
   })
   .del('/user/:userName', function* delUser(next) {
     const { userName } = this.params;
     if(!userName) {
       this.status = 400;
+      this.body = 'Expected { userName }.';
       yield next;
       return;
     }
     if(!db.users[userName]) {
       this.status = 404;
+      this.body = `User ${userName} doesn't exist.`;
       yield next;
       return;
     }
@@ -74,17 +81,20 @@ export default (db) => new Router()
     const { userName, itemId } = this.params;
     if(!userName || itemId === void 0) {
       this.status = 400;
+      this.body = 'Expected { userName, itemId }';
       yield next;
       return;
     }
     if(!db.users[userName]) {
       this.status = 404;
+      this.body = `User ${userName} doesn't exist.`;
       yield next;
       return;
     }
     const itemKey = parseInt(itemId);
     if(!db.users[userName].items[itemKey]) {
       this.status = 404;
+      this.body = `Item ${itemKey} doesn't exist.`;
       yield next;
       return;
     }

@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
 
+import Users from './Users';
+
 class App extends PureComponent {
   render() {
-    return <div>Hello world</div>;
+    return <Users />;
   }
 }
 

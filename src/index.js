@@ -4,9 +4,20 @@ import bodyParser from 'koa-bodyparser';
 
 import createAPIRouter from './createAPIRouter';
 import createRenderRouter from './createRenderRouter';
+import { address } from './address';
 
 const db = {
-  users: {},
+  users: {
+    'Frank N. Furter': {
+      items: [
+        'Jump to the left',
+        'Do the time warp again',
+      ],
+    },
+    'Dr Scott': {
+      items: [],
+    },
+  },
 };
 
 const apiRouter = createAPIRouter(db);
@@ -19,4 +30,9 @@ const app = createApp()
   .use(renderRouter.routes())
   .use(renderRouter.allowedMethods());
 
-app.listen(80);
+const server = app.listen(80, '127.0.0.1', () => {
+  const { address: host, port } = server.address();
+  address.protocol = 'http';
+  address.host = host;
+  address.port = port;
+});
